@@ -22,19 +22,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
   registerForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, passwordCheck]),
   });
   ngOnInit(): void {}
   signUp() {
-    console.log(this.registerForm);
-    debugger;
     if (this.registerForm.valid) {
       this.RegisterSubscription = this.authService
         .registerAdmin(this.registerForm.value)
         .subscribe(
           (res: any) => {
             this.alertService.showSnackBar(res?.message, true);
-            this.registerForm.reset();
             this.router.navigate(['/login']);
           },
           (err) => {

@@ -13,22 +13,28 @@
     </div>
     <div class="modal-body">
       <div class="card">
-        <div class="d-flex">
+        <div class="row">
           <img
             [src]="
               'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1637012564'
             "
-            class="card-img-top"
+            class="card-img-top col-md-6 col-12"
             style="max-height: 200px; max-width: 200px"
             [alt]="data?.book_name"
           />
-          <div class="card-body">
+          <div class="card-body col-md-6 col-12">
             <h5 class="card-title">{{ data?.book_name }}</h5>
             <p class="card-text">Author : {{ data?.author }}</p>
             <p class="card-text">Editor : {{ data?.editor }}</p>
-            <p class="card-text">
-              {{ data?.books_decription }}
-            </p>
+
+            <p
+              class="card-text"
+              [innerHTML]="
+                data?.books_decription.length > 50
+                  ? (data?.books_decription | slice: 0:50) + '..'
+                  : data?.books_decription
+              "
+            ></p>
             <p>
               <span class="selling-price">₹{{ data?.selling_price }}</span>
               <span class="marked-price">₹{{ data?.marked_price }} </span>

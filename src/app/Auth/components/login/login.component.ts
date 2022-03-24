@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {}
   LoginForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, passwordCheck]),
   });
   ngOnInit(): void {}
   Login() {
@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit, OnDestroy {
           (res: any) => {
             this.userDataService.setUserData(res?.data);
             this.alertService.showSnackBar(res?.message, true);
-            this.LoginForm.reset();
             this.router.navigate(['/dashboard/list']);
           },
           (err) => {

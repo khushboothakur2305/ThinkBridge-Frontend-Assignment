@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a routerLink="/dashboard/list">ShopBridge</a>
+          <a routerLink="/home">ShopBridge</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">Book Details</li>
       </ol>
@@ -35,7 +35,7 @@
               </h4>
               <p>
                 <span class="selling-price">
-                  ₹{{ bookData?.selling_price }}</span
+                  Price : ₹{{ bookData?.selling_price }}</span
                 >
                 <span class="marked-price">₹{{ bookData?.marked_price }} </span>
               </p>
@@ -44,12 +44,12 @@
                 [innerHTML]="
                   show
                     ? bookData?.books_decription
-                    : (bookData?.books_decription | slice: 0:500)
+                    : (bookData?.books_decription | slice: 0:700)
                 "
               ></p>
               <button
                 class="btn btn-outline-primary"
-                *ngIf="bookData?.books_decription.length > 500"
+                *ngIf="bookData?.books_decription.length > 700"
                 (click)="show = !show"
               >
                 {{ show ? "Show less" : "Show More" }}

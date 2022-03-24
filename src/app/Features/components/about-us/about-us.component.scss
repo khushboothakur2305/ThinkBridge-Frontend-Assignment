@@ -1,0 +1,41 @@
+.about-us {
+  padding: 60px 0;
+  width: 100%;
+  background-color: #f1f1f1;
+}
+.about-img img {
+  padding: 5px;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+}
+.about-sub-heading h2 {
+  color: #3697d8;
+}
+.about-content h2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.about-content p {
+  margin-bottom: 30px;
+  color: #6e6e6e;
+}
+.about-sub i {
+  width: 40px;
+  height: 40px;
+  background-color: #a30202;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+
+  margin-right: 10px;
+}
+.about-sub i h6 {
+  font-size: 18px;
+}
+.align-check {
+  display: flex;
+  align-items: center;
+  mat-icon {
+    margin-right: 10px;
+  }
+}

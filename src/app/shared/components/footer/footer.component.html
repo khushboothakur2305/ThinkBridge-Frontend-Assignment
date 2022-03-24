@@ -1,0 +1,79 @@
+<div class="my-5">
+  <footer class="text-center text-white" style="background-color: #3f51b5">
+    <div class="container">
+      <section class="mt-5">
+        <div class="row text-center d-flex justify-content-center pt-5">
+          <div class="col-md-2">
+            <h4>
+              <a routerLink="/home" class="text-white">Home</a>
+            </h4>
+          </div>
+          <div class="col-md-2">
+            <h4>
+              <a routerLink="/about-us" class="text-white">About us</a>
+            </h4>
+          </div>
+
+          <div class="col-md-2">
+            <h4>
+              <a routerLink="/privacy-policy" class="text-white"
+                >Privacy Policy</a
+              >
+            </h4>
+          </div>
+
+          <div class="col-md-2">
+            <h4>
+              <a routerLink="/terms-and-condition" class="text-white"
+                >Terms & condition</a
+              >
+            </h4>
+          </div>
+
+          <div class="col-md-2" *ngIf="userData">
+            <h4>
+              <a routerLink="/dashboard/list" class="text-white">Dashboard</a>
+            </h4>
+          </div>
+
+          <div class="col-md-2" *ngIf="userData">
+            <h4>
+              <a (click)="logout()" class="text-white">Logout</a>
+            </h4>
+          </div>
+          <div class="col-md-2" *ngIf="!userData">
+            <h4>
+              <a routerLink="/login" class="text-white">Login</a>
+            </h4>
+          </div>
+
+          <div class="col-md-2" *ngIf="!userData">
+            <h4>
+              <a routerLink="/register" class="text-white">Register</a>
+            </h4>
+          </div>
+        </div>
+      </section>
+
+      <hr class="my-5" />
+
+      <section class="mb-5">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+              distinctio earum repellat quaerat voluptatibus placeat nam,
+              commodi optio pariatur est quia magnam eum harum corrupti dicta,
+              aliquam sequi voluptate quas.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      © 2022 Copyright:
+      <a class="text-white">ShopBridge</a>
+    </div>
+  </footer>
+</div>

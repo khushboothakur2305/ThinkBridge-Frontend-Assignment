@@ -20,12 +20,15 @@ body {
 }
 
 .marked-price {
-  font-size: 20px;
+  font-size: 15px;
   margin-left: 10px;
   text-decoration: line-through;
 }
 .selling-price {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
   color: #3670dd;
+}
+.row {
+  margin: 0;
 }

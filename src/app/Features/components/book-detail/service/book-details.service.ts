@@ -12,12 +12,6 @@ export class BookDetailsService {
     private userDataService: UserDataService
   ) {}
   getProductById(id: string) {
-    const token = this.userDataService.userData.value;
-    const header = new HttpHeaders({
-      Authorization: `Bearer ${token.access_token}`,
-    });
-    return this.http.get(`${environment.baseUrl}/books/${id}`, {
-      headers: header,
-    });
+    return this.http.get(`${environment.baseUrl}/books/${id}`);
   }
 }

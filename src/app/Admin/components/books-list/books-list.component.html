@@ -15,9 +15,11 @@
   <div class="row">
     <section class="d-flex justify-content-between align-items-center">
       <h2>All Books</h2>
-      <button class="btn btn-outline-primary col-2" (click)="addBook()">
-        Add Book
-      </button>
+      <section class="col-6 d-flex justify-content-end">
+        <button class="btn btn-outline-primary" (click)="addBook()">
+          Add Book
+        </button>
+      </section>
     </section>
   </div>
   <div class="row">
@@ -52,7 +54,11 @@
 
         <ng-container matColumnDef="book_name">
           <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let row">{{ row?.book_name }}</td>
+          <td mat-cell *matCellDef="let row">
+            <a class="name" (click)="viewDetail(row?._id)">{{
+              row?.book_name
+            }}</a>
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="author">

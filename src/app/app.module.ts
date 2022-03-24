@@ -9,20 +9,23 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './Auth/components/login/login.component';
 import { RegisterComponent } from './Auth/components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DeleteConfirmationComponent } from './shared/components/delete-confirmation/delete-confirmation.component';
 import { HomeComponent } from './Features/components/home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { BookDetailComponent } from './Features/components/book-detail/book-detail.component';
+import { MatIconModule } from '@angular/material/icon';
+import { AboutUsComponent } from './Features/components/about-us/about-us.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    DeleteConfirmationComponent,
     HomeComponent,
+    AboutUsComponent,
     NavbarComponent,
     BookDetailComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { BookDetailComponent } from './Features/components/book-detail/book-deta
     FormsModule,
     ReactiveFormsModule,
     CKEditorModule,
+    MatIconModule,
   ],
   bootstrap: [AppComponent],
 })

@@ -93,4 +93,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
     this.bookData[index].image =
       'https://du5jhqks4kn0y.cloudfront.net/5d7889182ff8f000702bcb08/b287c465-139b-b166-5845-8df58d9b2af8.jpg';
   }
+  viewDetail(id) {
+    this.router.navigate([`details/${id}`]);
+  }
 }
