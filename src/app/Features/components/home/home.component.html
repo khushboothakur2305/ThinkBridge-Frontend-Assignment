@@ -1,0 +1,48 @@
+<div class="img-container">
+  <img
+    src="https://www.roffeypark.ac.uk/wp-content/uploads/2018/06/the-7-best-books-to-improve-influencing-skills-2-scaled.jpg"
+    alt="banner"
+    style="width: 100%"
+  />
+  <div class="centered"><h2>Welcome to the ShopBridge</h2></div>
+</div>
+<div *ngIf="book$ | async; let books">
+  <div class="row"><h1 class="text-center pt-5">All Books</h1></div>
+  <div class="row">
+    <div
+      class="card col-md-3 col-12 m-1"
+      *ngFor="let book of books; let i = index"
+    >
+      <img
+        [src]="book.image"
+        (error)="errorImage($event, i)"
+        class="card-img-top"
+        style="max-height: 250px; object-fit: contain"
+        [alt]="book?.book_name"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ book?.book_name }}</h5>
+        <p
+          class="card-text"
+          [innerHTML]="
+            book?.books_decription.length > 50
+              ? (book?.books_decription | slice: 0:50) + '..'
+              : book?.books_decription
+          "
+        ></p>
+        <p>
+          <span class="selling-price">₹{{ book?.selling_price }}</span>
+          <span class="marked-price">₹{{ book?.marked_price }} </span>
+        </p>
+        <div>
+          <button
+            (click)="viewDetails(book._id)"
+            class="btn btn-outline-primary card-link"
+          >
+            View Book
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

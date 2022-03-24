@@ -1,0 +1,49 @@
+<div class="modal-dialog-scrollable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title text-danger">
+        Are you sure you want to delete this book ?
+      </h3>
+      <button
+        type="button"
+        class="btn-close"
+        (click)="cancel()"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="card">
+        <div class="d-flex">
+          <img
+            [src]="
+              'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1637012564'
+            "
+            class="card-img-top"
+            style="max-height: 200px; max-width: 200px"
+            [alt]="data?.book_name"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ data?.book_name }}</h5>
+            <p class="card-text">Author : {{ data?.author }}</p>
+            <p class="card-text">Editor : {{ data?.editor }}</p>
+            <p class="card-text">
+              {{ data?.books_decription }}
+            </p>
+            <p>
+              <span class="selling-price">₹{{ data?.selling_price }}</span>
+              <span class="marked-price">₹{{ data?.marked_price }} </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="cancel()">
+        Close
+      </button>
+      <button type="button" class="btn btn-danger" (click)="deleteConfirm()">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

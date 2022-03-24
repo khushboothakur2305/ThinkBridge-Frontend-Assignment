@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row mt-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="/dashboard/list">ShopBridge</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Book Details</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="row mt-2">
+    <div class="card" *ngIf="bookData">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-5">
+            <img
+              [src]="bookData.image"
+              (error)="errorImage($event, i)"
+              class="w-100"
+              [alt]="book?.book_name"
+            />
+          </div>
+          <div class="col-7">
+            <div class="card-body">
+              <h1 class="card-title">
+                <b>{{ bookData?.book_name }}</b>
+              </h1>
+
+              <h4 class="badge-class">
+                <b>Author : </b>{{ bookData?.author }}
+              </h4>
+              <h4 class="badge-class">
+                <b>Editor : </b>{{ bookData?.editor }}
+              </h4>
+              <p>
+                <span class="selling-price">
+                  ₹{{ bookData?.selling_price }}</span
+                >
+                <span class="marked-price">₹{{ bookData?.marked_price }} </span>
+              </p>
+              <p
+                class="card-text"
+                [innerHTML]="
+                  show
+                    ? bookData?.books_decription
+                    : (bookData?.books_decription | slice: 0:500)
+                "
+              ></p>
+              <button
+                class="btn btn-outline-primary"
+                *ngIf="bookData?.books_decription.length > 500"
+                (click)="show = !show"
+              >
+                {{ show ? "Show less" : "Show More" }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

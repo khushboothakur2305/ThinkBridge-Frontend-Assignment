@@ -1,0 +1,156 @@
+<div class="d-flex justify-content-center flex-column m-5">
+  <div class="row">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="dashboard/list">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Add Books</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="row">
+    <section class="d-flex justify-content-between align-items-center">
+      <h2>Add Books</h2>
+    </section>
+  </div>
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-6 mt-2">
+              <mat-label>Book Name</mat-label>
+              <mat-form-field class="w-100" appearance="outline">
+                <input
+                  type="text"
+                  formControlName="book_name"
+                  matInput
+                  placeholder="Enter Book Name"
+                />
+                <mat-icon matSuffix>book</mat-icon>
+                <mat-error>Invalid book name </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-6 mt-2">
+              <mat-label>Author</mat-label>
+              <mat-form-field class="w-100" appearance="outline">
+                <input
+                  type="text"
+                  formControlName="author"
+                  matInput
+                  placeholder="Enter Book Author Name"
+                />
+                <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="col-6 mt-2">
+              <mat-label>Editor</mat-label>
+              <mat-form-field class="w-100" appearance="outline">
+                <input
+                  formControlName="editor"
+                  matInput
+                  placeholder="Entor Editor"
+                />
+                <mat-icon matSuffix>people</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="col-6 mt-2">
+              <mat-label>Marked Price</mat-label>
+              <mat-form-field class="w-100" appearance="outline">
+                <input
+                  type="number"
+                  formControlName="marked_price"
+                  matInput
+                  placeholder="Enter Marked Price"
+                />
+                <mat-icon matSuffix>currency_rupee</mat-icon>
+                <mat-hint>Price should be greater than 0</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="col-6 mt-2">
+              <mat-label>Selling price</mat-label>
+              <mat-form-field class="w-100" appearance="outline">
+                <input
+                  formControlName="selling_price"
+                  matInput
+                  placeholder="Enter selling price"
+                />
+                <mat-icon matSuffix>currency_rupee</mat-icon>
+                <mat-hint>Price should be greater than 0</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="col-6 mt-2">
+              <mat-label>Image</mat-label>
+              <mat-form-field class="w-100" appearance="outline">
+                <input
+                  type="text"
+                  formControlName="image"
+                  matInput
+                  placeholder="Website url:https://www.website-name.com"
+                />
+                <mat-icon matSuffix>image</mat-icon>
+                <mat-hint>Ex. https://unsplash.com/s/photos/open-book</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="col-12 mt-2" *ngIf="editMode && showEditor">
+              <mat-label>Description</mat-label>
+              <ckeditor
+                [editor]="Editor"
+                (change)="onChange($event)"
+                [data]="bookForm.value.books_decription"
+              ></ckeditor>
+              <p
+                class="text-danger"
+                *ngIf="
+                  bookForm.controls['books_decription'].invalid &&
+                  bookForm.controls['books_decription'].touched &&
+                  bookForm.controls['books_decription'].dirty
+                "
+              >
+                Invalid Description
+              </p>
+            </div>
+            <div class="col-12 mt-2" *ngIf="!editMode">
+              <mat-label>Description</mat-label>
+              <ckeditor
+                [editor]="Editor"
+                (change)="onChange($event)"
+                [data]="bookForm.value.books_decription"
+              ></ckeditor>
+              <p
+                class="text-danger"
+                *ngIf="
+                  bookForm.controls['books_decription'].invalid &&
+                  bookForm.controls['books_decription'].touched &&
+                  bookForm.controls['books_decription'].dirty
+                "
+              >
+                Invalid Description
+              </p>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="d-flex justify-content-end">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="bookForm.invalid"
+              >
+                {{ editMode ? "Edit" : "Create" }} Product
+              </button>
+              <button
+                (click)="cancel()"
+                type="button"
+                class="btn btn-danger"
+                style="margin-left: 20px"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

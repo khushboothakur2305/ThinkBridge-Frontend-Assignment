@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+
+html,
+body {
+  height: 100%;
+}
+* {
+  font-family: "Lora", serif !important;
+}
+.material-icons {
+  font-family: "Material Icons" !important;
+}
+.dangerSnackBar {
+  background-color: #bf2b2b;
+  color: white;
+}
+.successSnackBar {
+  background-color: rgb(34, 98, 172);
+  color: white;
+}
+
+.marked-price {
+  font-size: 20px;
+  margin-left: 10px;
+  text-decoration: line-through;
+}
+.selling-price {
+  font-size: 25px;
+  font-weight: bold;
+  color: #3670dd;
+}
