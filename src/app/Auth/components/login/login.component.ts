@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         .loginUser(this.LoginForm.value)
         .subscribe(
           (res: any) => {
-            this.userDataService.setUserData(res?.data);
-            this.alertService.showSnackBar(res?.message, true);
+            this.userDataService.setUserData(res.data);
+            this.alertService.showSnackBar(res.message, true);
             this.router.navigate(['/dashboard/list']);
           },
           (err) => {

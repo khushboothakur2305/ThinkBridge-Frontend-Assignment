@@ -8,7 +8,6 @@ export class ErrorMessageService {
   constructor(private snackbar: MatSnackBar) {}
 
   postErrorMessage(err) {
-    console.error(err);
     if (err?.status == 400) {
       Object.keys(err.error).forEach((ele) => {
         this.snackbar.open(err.error[ele], 'Error', {

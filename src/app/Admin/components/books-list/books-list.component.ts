@@ -81,13 +81,9 @@ export class BooksListComponent implements OnInit, OnDestroy {
       }
     });
   }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
+  applyFilter(event: any) {
+    const filterValue = event.target.value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
   errorImage(event, index) {
     this.bookData[index].image =

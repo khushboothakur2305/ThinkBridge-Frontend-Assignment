@@ -112,7 +112,7 @@ export class BooksAddEditComponent implements OnInit, OnDestroy {
   cancel() {
     this.router.navigate(['/dashboard/list']);
   }
-  public onChange({ editor }: ChangeEvent) {
+  public onChange({ editor }: any) {
     const data = editor.getData();
     this.bookForm.controls['books_decription'].setValue(data);
     this.bookForm.controls['books_decription'].markAsDirty();

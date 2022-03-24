@@ -7,10 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class BookDetailsService {
-  constructor(
-    private http: HttpClient,
-    private userDataService: UserDataService
-  ) {}
+  constructor(private http: HttpClient) {}
   getProductById(id: string) {
     return this.http.get(`${environment.baseUrl}/books/${id}`);
   }

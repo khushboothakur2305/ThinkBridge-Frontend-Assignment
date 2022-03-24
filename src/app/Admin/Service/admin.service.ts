@@ -11,7 +11,7 @@ export class AdminService {
   addProduct(data) {
     const token = this.userDataService.userData.value;
     const header = new HttpHeaders({
-      Authorization: `Bearer ${token.access_token}`,
+      Authorization: `Bearer ${token?.access_token}`,
     });
     return this.http.post(`${environment.baseUrl}/books`, data, {
       headers: header,
@@ -20,7 +20,7 @@ export class AdminService {
   editProduct(data, id: string) {
     const token = this.userDataService.userData.value;
     const header = new HttpHeaders({
-      Authorization: `Bearer ${token.access_token}`,
+      Authorization: `Bearer ${token?.access_token}`,
     });
     return this.http.patch(`${environment.baseUrl}/books/${id}`, data, {
       headers: header,
@@ -29,7 +29,7 @@ export class AdminService {
   deleteProduct(id: string) {
     const token = this.userDataService.userData.value;
     const header = new HttpHeaders({
-      Authorization: `Bearer ${token.access_token}`,
+      Authorization: `Bearer ${token?.access_token}`,
     });
     return this.http.delete(`${environment.baseUrl}/books/${id}`, {
       headers: header,
@@ -38,7 +38,7 @@ export class AdminService {
   getProductById(id: string) {
     const token = this.userDataService.userData.value;
     const header = new HttpHeaders({
-      Authorization: `Bearer ${token.access_token}`,
+      Authorization: `Bearer ${token?.access_token}`,
     });
     return this.http.get(`${environment.baseUrl}/books/${id}`, {
       headers: header,

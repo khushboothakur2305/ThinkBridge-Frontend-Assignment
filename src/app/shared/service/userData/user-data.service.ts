@@ -15,7 +15,7 @@ export class UserDataService {
     return JSON.parse(localStorage.getItem('userData'));
   }
   logout() {
-    localStorage.removeItem('userData');
+    localStorage.clear();
     this.userData.next(null);
   }
 }

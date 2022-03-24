@@ -27,7 +27,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.userDataSubscription.unsubscribe();
     }
   }
-
   logout() {
     this.userDataService.logout();
     this.alertService.showSnackBar('Logged out successfully !', true);
