@@ -1,5 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserDataService } from '../shared/service/userData/user-data.service';
@@ -11,9 +15,15 @@ class MockUserData {
 describe('AuthGuard', () => {
   let guard: AuthGuard;
   let userDataService: UserDataService;
+  let routeMock: any = { snapshot: {} };
+  let routeStateMock: any = { snapshot: {}, url: '/dashboard' };
+  let routerMock = { navigate: jasmine.createSpy('navigate') };
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{ provider: UserDataService, useClass: MockUserData }],
+      providers: [
+        { provider: UserDataService, useClass: MockUserData },
+        { provide: Router, useValue: routerMock },
+      ],
     });
     guard = TestBed.inject(AuthGuard);
     userDataService = TestBed.inject(UserDataService);
@@ -32,11 +42,10 @@ describe('AuthGuard', () => {
       _id: '623b81c85323caa85b5b48d7',
     });
     guard.canActivate(new ActivatedRouteSnapshot(), <RouterStateSnapshot>{
-      url: 'testUrl',
+      url: 'dashboard',
     });
     userDataService.userData.pipe(
       map((userData) => {
-        expect(userData).toEqual(null);
         if (userData) {
           return true;
         } else {
@@ -44,5 +53,11 @@ describe('AuthGuard', () => {
         }
       })
     );
+  });
+  it('should be created', () => {
+    userDataService.setUserData(null);
+    guard.canActivate(new ActivatedRouteSnapshot(), <RouterStateSnapshot>{
+      url: 'dashboard',
+    });
   });
 });

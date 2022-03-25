@@ -31,7 +31,6 @@ describe('AppComponent', () => {
   it(`should get userData`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    app.ngOnInit();
     let userData = JSON.stringify({
       access_token:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNiODFjODUzMjNjYWE4NWI1YjQ4ZDciLCJpYXQiOjE2NDgxMjU3OTZ9.B5p1A_XATP6_k1mTUJlq1PHuaODzcyFiXsMpqftZ4vU',
@@ -41,19 +40,24 @@ describe('AppComponent', () => {
       _id: '623b81c85323caa85b5b48d7',
     });
     localStorage.setItem('userData', userData);
+    app.ngOnInit();
     app.userData = userDataService.getUserData();
     expect(app.userData._id).toEqual('623b81c85323caa85b5b48d7');
     if (app.userData) {
       userDataService.setUserData(app.userData);
     }
   });
+
   it(`should get userData null`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    app.ngOnInit();
     let userData = null;
     localStorage.setItem('userData', userData);
+    app.ngOnInit();
     app.userData = userDataService.getUserData();
     expect(app.userData).toEqual(null);
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/login'], {
+      replaceUrl: true,
+    });
   });
 });
